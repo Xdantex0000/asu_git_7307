@@ -643,15 +643,13 @@ AlienBullet.prototype = new Bullet();
 Asteroid = function () {
   this.init("asteroid",
       [-10,   0,
-        -5,   7,
-        -3,   4,
-        1,  10,
-        5,   4,
-        10,   0,
-        5,  -6,
-        2, -10,
-        -4, -10,
-        -4,  -5]);
+        -12,  -4,
+        12,  -4,
+        20,   0,
+        12,   4,
+        -12,   4,
+        -10,   0,
+        20,   0]);
 
   this.visible = true;
   this.scale = 6;
@@ -661,7 +659,7 @@ Asteroid = function () {
 
   this.collision = function (other) {
     SFX.explosion().play();
-    if (other.name == "bullet") Game.score += 120 / this.scale;
+    if (other.name == "bullet") Game.score += 240 / this.scale;
     this.scale /= 3;
     if (this.scale > 0.5) {
       // break into fragments
@@ -878,7 +876,7 @@ Game = {
   totalAsteroids: 5,
   lives: 0,
 
-  canvasWidth: 800,
+  canvasWidth: 900,
   canvasHeight: 600,
 
   sprites: [],
